@@ -1,1 +1,2 @@
-# Sistem-Diskominfo
+# Sistem-Diskominfo 
+Menampilkan data statistik
