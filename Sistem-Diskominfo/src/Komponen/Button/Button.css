@@ -1,0 +1,17 @@
+/**
+ * @Author: Your name
+ * @Date:   2024-04-04 09:14:09
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2024-04-06 19:05:24
+ */
+
+.button {
+    width: 65%;
+    height: 30px;
+    padding: 5px;
+    margin-top: 20px;
+    stroke: #264466;
+    border-radius: 1em;
+    color: white;
+    font-family: "Merriweather Sans";
+}
