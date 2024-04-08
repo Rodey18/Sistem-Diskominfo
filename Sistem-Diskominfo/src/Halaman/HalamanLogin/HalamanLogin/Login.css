@@ -1,0 +1,150 @@
+/**
+ * @Author: Your name
+ * @Date:   2024-04-02 10:29:08
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2024-04-06 19:26:41
+ */
+
+.backcover {
+    background-color: #d8ecf7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Gambar {
+    margin-bottom: 20px;
+}
+
+.Gambar img {
+    max-width: 150px;
+    max-height: 150px;
+    display: flex;
+    padding: 15px 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    align-self: stretch;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Merriwather Sans";
+}
+
+@font-face {
+    font-family: "Merriweather Sans";
+    src: url("../fonts/RolexLight.woff2");
+}
+
+.Pages {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover {
+    position: absolute;
+    background-color: #ffffff;
+    width: 600px;
+    height: 600px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1em;
+    box-shadow: 0 0.188em 1.550em rgb(100, 156, 156);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.h2 {
+    font-family: "Merriweather Sans";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.h5 {
+    color: #9C9494;
+    font-family: "Merriweather Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: #ffffff;
+    border: 2px solid #264466;
+    height: 1em;
+    width: 80%;
+    border-radius: 0.25em;
+    text-align: left;
+    padding: 2em;
+    font-family: "Merriweather Sans";
+}
+
+#nip-input,
+#password-input {
+    margin: 10px;
+    /* Jarak 25 piksel dari bawah */
+    /* Atur properti lain sesuai kebutuhan */
+}
+
+input:focus {
+    outline-color: black;
+}
+
+.login-button {
+    background-color: #264466;
+    transform: scale(1.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    margin: 24px;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    color: #F67C7C;
+    font-family: "Merriweather Sans";
+    text-align: left;
+}
+
+.error-message span {
+    margin-right: 5px;
+}
+
+.error-text {
+    margin-left: 5px;
+}
+
+.incorrect {
+    border: 1px solid #F67C7C;
+}
+
+@media screen and (max-width: 768px) {
+    .cover {
+        overflow-y: auto;
+        /* Menggunakan overflow-y: auto; agar scroll muncul hanya jika diperlukan */
+    }
+}
