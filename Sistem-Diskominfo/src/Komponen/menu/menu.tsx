@@ -11,20 +11,24 @@ const SideMenuPage: React.FC = () => {
   return (
     <div className="container-menu">
       <div className="container-judul">
-        <span className="judul">DataStat</span>
+        <h1 className="judul">DataStat</h1>
       </div>
-      <div className="menu-slide">
+      <div className="menu-slide" style={{ margin: "70px" }}>
         <Link to="/dashboard" className="menu-item">
           <IoIosHome />
-          <span className="menu-text">Dashboard</span>
+          <h5 className="menu-text">Dashboard</h5>
         </Link>
-        <Link to="/upload" className="menu-item">
+        <Link
+          to="/uploadfile"
+          className="menu-item"
+          style={{ marginBottom: "70px" }}
+        >
           <IoIosCloudUpload />
-          <span className="menu-text">Data</span>
+          <h5 className="menu-text">Data</h5>
         </Link>
-        <Link to="/" className="menu-item">
+        <Link to="/" className="menu-item" style={{ margin: "70px" }}>
           <IoIosPeople />
-          <span className="menu-text">Employee</span>
+          <h5 className="menu-text">Employee</h5>
         </Link>
       </div>
       <div className="akhir-slide">

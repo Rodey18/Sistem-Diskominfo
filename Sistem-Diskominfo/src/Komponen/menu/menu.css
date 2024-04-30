@@ -1,44 +1,47 @@
 /**
  *   @Author: Your name
-   * @Date:   2024-04-16 11:09:09
+ *   @Date:   2024-04-16 11:09:09
  *   @Last Modified by:   Your name
-   
-  *  @Last Modified time: 20
- 2  4-04-30 21:50:38
-   */
-.c  ontainer-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Sesuaikan penataan */
-    align-items: flex-start; /* Sesuaikan penataan */
-    background-color: greenyellow;
-  width: 35%;
-  height: 100vh;
-  padding: 20px;
-    position: fixed;
-    top: 0;
-  left: 0;
+ *   @Last Modified time: 2024-04-30 22:45:10
+ */
+
+.container-menu {
+  width: 100%;
+  /* Mengatur lebar container-menu menjadi 100% dari viewport */
+  display: flex;
+  flex-direction: column;
 }
 
- .c ontainer-judul {
-    margin-bottom: 20px;
-    text-align: center;
- } 
-  
-.m  enu-slide {
-    display: flex;
-   
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: greenyellow;
-    width: 100%;
-  padding: 20px;
-  overflow-y: auto; /* Tambahkan overflow */
+.c ontainer-judul {
+  padding: 10px;
+  background-color: yellow;
 }
-  
-.  margin-bottom: 10px;
+
+.menu-slide {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Menengahkan item secara horizontal */
+  align-items: center;
+  /* Menengahkan item secara vertikal */
+  margin: 70px;
+  padding: 70px;
 }
 
 .akhir-slide {
-  /* Tambahkan gaya jika diperlukan */
+  padding: 10px;
+  background-color: green;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+
+.menu-text {
+  margin-left: 10px;
 }
