@@ -1,0 +1,44 @@
+/**
+ *   @Author: Your name
+   * @Date:   2024-04-16 11:09:09
+ *   @Last Modified by:   Your name
+   
+  *  @Last Modified time: 20
+ 2  4-04-30 21:50:38
+   */
+.c  ontainer-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Sesuaikan penataan */
+    align-items: flex-start; /* Sesuaikan penataan */
+    background-color: greenyellow;
+  width: 35%;
+  height: 100vh;
+  padding: 20px;
+    position: fixed;
+    top: 0;
+  left: 0;
+}
+
+ .c ontainer-judul {
+    margin-bottom: 20px;
+    text-align: center;
+ } 
+  
+.m  enu-slide {
+    display: flex;
+   
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: greenyellow;
+    width: 100%;
+  padding: 20px;
+  overflow-y: auto; /* Tambahkan overflow */
+}
+  
+.  margin-bottom: 10px;
+}
+
+.akhir-slide {
+  /* Tambahkan gaya jika diperlukan */
+}

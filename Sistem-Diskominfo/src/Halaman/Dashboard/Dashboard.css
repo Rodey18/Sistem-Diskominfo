@@ -5,6 +5,10 @@
  * @Last Modified time: 2024-04-09 04:24:33
  */
 
-.header {
-    justify-content: center;
+.data-stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* Jika Anda ingin menyesuaikan lebih lanjut, tambahkan gaya CSS tambahan di sini */
