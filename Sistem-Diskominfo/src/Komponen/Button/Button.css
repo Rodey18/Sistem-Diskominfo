@@ -6,12 +6,12 @@
  */
 
 .button {
-    width: 65%;
-    height: 30px;
-    padding: 5px;
-    margin-top: 20px;
-    stroke: #264466;
-    border-radius: 1em;
-    color: white;
-    font-family: "Merriweather Sans";
+  width: 50%;
+  height: 30px;
+  padding: 5px;
+  margin-top: 20px;
+  stroke: #264466;
+  border-radius: 1em;
+  color: white;
+  font-family: "Merriweather Sans";
 }

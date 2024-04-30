@@ -19,7 +19,7 @@ const SideMenuPage: React.FC = () => {
           <h5 className="menu-text">Dashboard</h5>
         </Link>
         <Link
-          to="/upload"
+          to="/uploadfile"
           className="menu-item"
           style={{ marginBottom: "70px" }}
         >
