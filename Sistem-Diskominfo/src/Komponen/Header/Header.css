@@ -1,112 +1,123 @@
-/**
- * @Author: Your name
- * @Date:   2024-04-04 09:14:30
- * @Last Modified by:   Your name
- * @Last Modified time: 2024-04-08 23:29:47
- */
-
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: #ffffff;
+  width: 100%;
+  /* Mengatur lebar header menjadi 100% dari viewport */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #F8FAFC;
-    padding: 5px;
-    width: auto;
-    height: 30%;
-    /* Mengatur tinggi yang sama dengan notif-profile-container */
-    margin-right: 10px;
-    background-color: #ffffff;
+  flex-grow: 1;
+  /* Menjadikan search-container memperluas sesuai sisa ruang yang tersedia */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid #f8fafc;
+  padding: 20px;
+  margin: 20px;
+  height: 100%;
+  /* Mengisi tinggi search-container sesuai tinggi header */
+  background-color: #ffffff;
 }
 
 .notif-profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #F8FAFC;
-    padding: 5px;
-    width: auto;
-    height: 30%;
-    margin-left: 10px;
-    background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid #f8fafc;
+  padding: 5px;
+  margin-left: 10px;
+  background-color: #ffffff;
 }
-
 
 /* Mengatur agar profil-container berada di dalam notif-profile-container */
 
 .profile-container {
-    padding: 10px;
+  padding: 10px;
 }
 
 .notif-container {
-    margin-right: 10px;
-    /* Mengurangi margin agar tidak terlalu jauh */
+  margin-right: 10px;
+  /* Mengurangi margin agar tidak terlalu jauh */
 }
 
 .search-button {
-    border: none;
-    cursor: pointer;
-    /* Mengatur ukuran button */
-    width: 25px;
-    height: 25px;
-    padding: 5px;
-    /* Sesuaikan padding sesuai kebutuhan */
-    margin: 0 10px 0 0;
-    /* Sesuaikan margin sesuai kebutuhan */
-    justify-content: center;
-    background-color: transparent;
-    /* Menghilangkan latar belakang */
-    border-radius: 50%;
-    /* Membuat tombol menjadi lingkaran */
-    z-index: 1;
-    /* Menempatkan tombol di atas latar belakang */
+  border: none;
+  cursor: pointer;
+  /* Mengatur ukuran button */
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  /* Sesuaikan padding sesuai kebutuhan */
+  margin: 0 10px 0 0;
+  /* Sesuaikan margin sesuai kebutuhan */
+  justify-content: center;
+  background-color: transparent;
+  /* Menghilangkan latar belakang */
+  border-radius: 50%;
+  /* Membuat tombol menjadi lingkaran */
+  z-index: 1;
+  /* Menempatkan tombol di atas latar belakang */
 }
 
 .search-input {
-    width: 200px;
-    height: 10%;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    background-color: #F8FAFC;
-    font-size: small;
-    font-family: 'Playfair Display';
-    color: #264466;
+  flex-grow: 1;
+  /* Mengisi sisa ruang yang tersedia pada search input */
+  width: 100%;
+  /* Mengisi lebar input sesuai container */
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  background-color: #f8fafc;
+  font-size: small;
+  font-family: "Playfair Display";
+  color: #264466;
 }
 
 .search-button,
 .notif-button {
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    color: #264466;
-    border: none;
-    /* Menghilangkan border */
-    outline: none;
-    /* Menghilangkan outline */
-    box-shadow: none;
-    /* Menghilangkan shadow jika ada */
+  width: 40px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: #264466;
+  border: none;
+  /* Menghilangkan border */
+  outline: none;
+  /* Menghilangkan outline */
+  box-shadow: none;
+  /* Menghilangkan shadow jika ada */
 }
 
 .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
-
 
 /* Menghilangkan efek visual focus pada semua elemen */
 
 *:focus {
-    outline: none !important;
-    box-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
