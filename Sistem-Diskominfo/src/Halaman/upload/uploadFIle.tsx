@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Komponen/Button/Button";
 import "./uploadFile.css";
-import UploadInfografis from "./uploadInfografis";
 
 const FileUpload: React.FC = () => {
   const [judul, setJudul] = useState("");
