@@ -19,9 +19,6 @@
 }
 
 .buttonDating {
-  height: 50px;
-  width: 50px;
-  background-color: blue;
   /* Warna asli */
   transition: background-color 0.3s;
   /* Efek transisi */
