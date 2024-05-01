@@ -6,10 +6,8 @@
  */
 
 .button {
-  width: 50%;
-  height: 30px;
-  padding: 5px;
-  margin-top: 20px;
+  padding: 10px;
+  margin: 10px;
   stroke: #264466;
   border-radius: 1em;
   color: white;

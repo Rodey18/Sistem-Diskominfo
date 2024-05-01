@@ -1,0 +1,43 @@
+/**
+ * @Author: Your name
+ * @Date:   2024-04-18 10:27:08
+ *   @Last Modified by:   Your name
+  *  @Last Modified time: 2024-05-01 07:07:39
+   */
+
+/* File UploadFile.css */
+
+.input-placeholder {
+  border-radius: 10px;
+  height: 20px;
+  width: 250px;
+}
+
+.dragdropicon {
+  width: 65px;
+  height: 65px;
+}
+
+.buttonDating {
+  height: 50px;
+  width: 50px;
+  background-color: blue;
+  /* Warna asli */
+  transition: background-color 0.3s;
+  /* Efek transisi */
+}
+
+.buttonDating:hover {
+  background-color: white;
+  /* Warna saat dihover */
+}
+
+.Kiri {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.judul {
+  text-align: left;
+  /* Meratakan teks ke kiri */
+}
