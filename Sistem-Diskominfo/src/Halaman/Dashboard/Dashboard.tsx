@@ -1,6 +1,8 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
-import Header from "../../Komponen/Header/Header";
+// import Header from "../../Komponen/Header/Header";
+import ResponsiveDrawer from "../../Komponen/menu/menu";
+
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
@@ -8,7 +10,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="data-stat-container">
-      <Header />
+      {/* <Header /> */}
+      <ResponsiveDrawer />
       <div className="main-content"></div>
     </div>
   );
