@@ -1,0 +1,40 @@
+/**
+ * @Author: Your name
+ * @Date:   2024-05-01 12:48:27
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2024-05-06 13:27:52
+ */
+
+
+/* .table-container {
+  margin: 20px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table thead th {
+  background-color: #ff8c00;
+  /* Warna latar belakang */
+
+
+/* color: #fff; */
+
+
+/* Warna teks */
+
+
+/* padding: 8px;
+border: 1px solid #ddd; */

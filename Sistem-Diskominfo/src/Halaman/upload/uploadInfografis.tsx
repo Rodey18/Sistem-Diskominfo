@@ -105,7 +105,7 @@ const UploadInfografis: React.FC = () => {
               style={{ fontSize: "70px" }}
             />
             <h4 className="dragdrop">Drag & drop</h4>
-            <h6 className="fromdevices">or select files from device</h6>
+            <h6 className="fromdevices">or select image from device</h6>
           </div>
           <Button
             className="buttonkirim"
