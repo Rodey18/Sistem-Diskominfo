@@ -26,7 +26,7 @@ const SideMenuPage: React.FC = () => {
           <IoIosCloudUpload />
           <h5 className="menu-text">Data</h5>
         </Link>
-        <Link to="/" className="menu-item" style={{ margin: "70px" }}>
+        <Link to="/employee" className="menu-item" style={{ margin: "70px" }}>
           <IoIosPeople />
           <h5 className="menu-text">Employee</h5>
         </Link>
