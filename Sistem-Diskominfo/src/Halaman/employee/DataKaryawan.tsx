@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import SaveIcon from "@mui/icons-material/Save";
 import {
   DataGrid,
   GridColDef,
@@ -8,293 +9,306 @@ import {
   GridActionsCellItem,
 } from "@mui/x-data-grid";
 
+interface RowData {
+  id: number;
+  no: string;
+  username: string;
+  nip: string;
+  name: string;
+  role: string;
+  dateCreated: Date;
+  lastLogin: Date;
+}
+
 const DataKaryawan: React.FC = () => {
-  const [rows, setRows] = useState<GridRowsProp>([
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john.doe@example.com",
-      age: 25,
+  const [rows, setRows] = useState<GridRowsProp>([]);
+  const [saveSuccess, setSaveSuccess] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Load data from local storage on component mount
+    const savedRows = localStorage.getItem("rows");
+    if (savedRows) {
+      setRows(JSON.parse(savedRows));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save data to local storage whenever rows change
+    localStorage.setItem("rows", JSON.stringify(rows));
+  }, [rows]);
+
+  const handleEdit = (id: number) => {
+    const updatedRows = rows.map((row: RowData) =>
+      row.id === id ? { ...row, _edit: true } : row
+    );
+    setRows(updatedRows);
+  };
+
+  const handleSaveEdit = (id: number) => {
+    const updatedRows = rows.map((row: RowData) =>
+      row.id === id ? { ...row, _edit: false } : row
+    );
+    setRows(updatedRows);
+
+    // Update local storage with the updated data
+    localStorage.setItem("rows", JSON.stringify(updatedRows));
+
+    setSaveSuccess(true);
+    setTimeout(() => {
+      setSaveSuccess(false);
+    }, 3000);
+  };
+
+  const handleDelete = (id: number) => {
+    const updatedRows = rows.filter((row: RowData) => row.id !== id);
+    setRows(updatedRows);
+
+    // Update local storage with the updated data
+    localStorage.setItem("rows", JSON.stringify(updatedRows));
+  };
+
+  const handleAdd = () => {
+    const newId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 1;
+    const newRow: RowData = {
+      id: newId,
+      no: "",
+      username: "",
+      nip: "",
+      name: "",
+      role: "",
       dateCreated: new Date(),
       lastLogin: new Date(),
-    },
-    // Add more rows here...
-  ]);
+    };
+    const updatedRows = [...rows, newRow];
+    setRows(updatedRows);
+
+    // Update local storage with the updated data
+    localStorage.setItem("rows", JSON.stringify(updatedRows));
+  };
+
+  const handleCellEdit = (params: any) => {
+    const { id, field, value } = params;
+
+    // Validasi untuk field "Name" agar hanya menerima huruf
+    if (field === "name" && isNaN(value)) {
+      setRows((prevRows: any) =>
+        prevRows.map((row: any) =>
+          row.id === id ? { ...row, [field]: value } : row
+        )
+      );
+    }
+  };
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 160, editable: true },
-    { field: "email", headerName: "Email", width: 200, editable: true },
-    { field: "age", headerName: "Age", type: "number", editable: true },
+    { field: "no", headerName: "No", width: 50 },
+    {
+      field: "username",
+      headerName: "Username",
+      type: "number",
+      width: 100,
+      editable: true,
+    },
+    { field: "nip", headerName: "NIP", width: 100, editable: true },
+    { field: "name", headerName: "Name", width: 100, editable: true },
+    { field: "role", headerName: "Role", width: 100, editable: true },
     {
       field: "dateCreated",
       headerName: "Date Created",
       type: "date",
       width: 180,
-      editable: true,
+      editable: false, // Tidak dapat diedit
     },
     {
       field: "lastLogin",
       headerName: "Last Login",
       type: "dateTime",
       width: 220,
-      editable: true,
+      editable: false, // Tidak dapat diedit
     },
     {
       field: "actions",
       type: "actions",
-      width: 100,
-      getActions: () => [
-        <GridActionsCellItem icon={<EditIcon />} label="Edit" />,
-        <GridActionsCellItem icon={<DeleteIcon />} label="Delete" />,
+      width: 200,
+      getActions: (params) => [
+        <GridActionsCellItem
+          icon={<EditIcon />}
+          label="Edit"
+          onClick={() => handleEdit(params.id as number)}
+        />,
+        <GridActionsCellItem
+          icon={<DeleteIcon />}
+          label="Delete"
+          onClick={() => handleDelete(params.id as number)}
+        />,
+        <GridActionsCellItem
+          icon={<SaveIcon />}
+          label="Save"
+          onClick={() => handleSaveEdit(params.id as number)}
+        />,
       ],
     },
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        onEditCellChangeCommitted={(params) => {
-          const updatedRows = rows.map((row) =>
-            row.id === params.id
-              ? { ...row, [params.field]: params.props.value }
-              : row
-          );
-          setRows(updatedRows);
-        }}
-      />
+    <div>
+      <h2>Data Karyawan</h2>
+      <button onClick={handleAdd}>Tambah Data Karyawan</button>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          onEditCellChangeCommitted={(params: any) => handleCellEdit(params)}
+          isCellEditable={() => true}
+        />
+      </div>
+      {saveSuccess && (
+        <div className="alert alert-success" role="alert">
+          Data berhasil disimpan!
+        </div>
+      )}
     </div>
   );
 };
 
 export default DataKaryawan;
 
-// import React, { useState } from "react";
-// import { useTable, Column } from "react-table";
-// import "./DataKaryawan.css";
+// import React, { useState, useEffect } from "react";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import EditIcon from "@mui/icons-material/Edit";
+// import SaveIcon from "@mui/icons-material/Save";
+// import {
+//   DataGrid,
+//   GridColDef,
+//   GridRowsProp,
+//   GridActionsCellItem,
+// } from "@mui/x-data-grid";
 
-// interface FormData {
-//   No: string;
-//   Username: string;
-//   Nip: string;
-//   Name: string;
-//   Role: string;
+// interface RowData {
+//   id: number;
+//   name: string;
+//   email: string;
+//   age: number;
+//   dateCreated: Date;
+//   lastLogin: Date;
 // }
 
-// interface EditableColumn extends Column {
-//   isEditable?: boolean;
-// }
+// const DataKaryawan: React.FC = () => {
+//   const [rows, setRows] = useState<GridRowsProp>([]);
+//   const [saveSuccess, setSaveSuccess] = useState<boolean>(false);
 
-// interface DataKaryawanProps {
-//   columns: EditableColumn[];
-// }
+//   useEffect(() => {
+//     // Simpan data ke penyimpanan lokal atau server di sini
+//     localStorage.setItem("rows", JSON.stringify(rows));
+//   }, [rows]);
 
-// const DataKaryawan: React.FC<DataKaryawanProps> = ({ columns }) => {
-//   const [data, setData] = useState<FormData[]>([]);
-//   const [formData, setFormData] = useState<FormData>({
-//     No: "",
-//     Username: "",
-//     Nip: "",
-//     Name: "",
-//     Role: "",
-//   });
-//   const [showInput, setShowInput] = useState(false);
-
-//   const addData = () => {
-//     setData([...data, formData]);
-//     setFormData({
-//       No: "",
-//       Username: "",
-//       Nip: "",
-//       Name: "",
-//       Role: "",
-//     });
-//     setShowInput(false);
+//   const handleEdit = (id: number) => {
+//     const updatedRows = rows.map((row) =>
+//       row.id === id ? { ...row, _edit: true } : row
+//     );
+//     setRows(updatedRows);
 //   };
 
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFormData((prevData) => ({
-//       ...prevData,
-//       [name]: value,
-//     }));
+//   const handleSaveEdit = (id: number) => {
+//     const updatedRows = rows.map((row) =>
+//       row.id === id ? { ...row, _edit: false } : row
+//     );
+//     setRows(updatedRows);
+//     setSaveSuccess(true);
+//     setTimeout(() => {
+//       setSaveSuccess(false);
+//     }, 3000);
 //   };
 
-//   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-//     useTable<FormData>({
-//       columns,
-//       data,
-//     });
+//   const handleDelete = (id: number) => {
+//     const updatedRows = rows.filter((row) => row.id !== id);
+//     setRows(updatedRows);
+//   };
+
+//   const handleAdd = () => {
+//     const newId = rows.length + 1;
+//     const newRow = {
+//       id: newId,
+//       no: "",
+//       username: "",
+//       nip: "",
+//       name: "",
+//       role: "",
+//       dateCreated: new Date(),
+//       lastLogin: new Date(),
+//     };
+//     setRows([...rows, newRow]);
+//   };
+
+//   const handleCellEdit = (params: any) => {
+//     const { id, field, value } = params;
+//     setRows((prevRows: any) =>
+//       prevRows.map((row: any) =>
+//         row.id === id ? { ...row, [field]: value } : row
+//       )
+//     );
+//   };
+
+//   const columns: GridColDef[] = [
+//     { field: "no", headerName: "No", width: 50 },
+//     { field: "usename", headerName: "Username", width: 100, editable: true },
+//     { field: "nip", headerName: "NIP", width: 100, editable: true },
+//     { field: "name", headerName: "Name", width: 100, editable: true },
+//     { field: "role", headerName: "Role", width: 100, editable: true },
+//     {
+//       field: "dateCreated",
+//       headerName: "Date Created",
+//       type: "date",
+//       width: 180,
+//       editable: true,
+//     },
+//     {
+//       field: "lastLogin",
+//       headerName: "Last Login",
+//       type: "dateTime",
+//       width: 220,
+//       editable: true,
+//     },
+//     {
+//       field: "actions",
+//       type: "actions",
+//       width: 200,
+//       getActions: (params) => [
+//         <GridActionsCellItem
+//           icon={<SaveIcon />}
+//           label="Save"
+//           onClick={() => handleSaveEdit(params.id as number)}
+//         />,
+//         <GridActionsCellItem
+//           icon={<EditIcon />}
+//           label="Edit"
+//           onClick={() => handleEdit(params.id as number)}
+//         />,
+//         <GridActionsCellItem
+//           icon={<DeleteIcon />}
+//           label="Delete"
+//           onClick={() => handleDelete(params.id as number)}
+//         />,
+//       ],
+//     },
+//   ];
 
 //   return (
 //     <div>
 //       <h2>Data Karyawan</h2>
-//       <div className="add-data-form">
-//         <button onClick={() => setShowInput(true)}>Tambah Data Karyawan</button>
+//       <button onClick={handleAdd}>Tambah Data Karyawan</button>
+//       <div style={{ height: 400, width: "100%" }}>
+//         <DataGrid
+//           rows={rows}
+//           columns={columns}
+//           onEditCellChangeCommitted={(params) => handleCellEdit(params)}
+//           isCellEditable={() => true}
+//         />
 //       </div>
-//       <div className="table-container">
-//         <table className="table" {...getTableProps()}>
-//           <thead>
-//             {headerGroups.map((headerGroup) => (
-//               <tr {...headerGroup.getHeaderGroupProps()}>
-//                 {headerGroup.headers.map((column) => (
-//                   <th {...column.getHeaderProps()}>
-//                     {column.render("Header")}
-//                   </th>
-//                 ))}
-//               </tr>
-//             ))}
-//           </thead>
-//           <tbody {...getTableBodyProps()}>
-//             {rows.map((row, rowIndex) => {
-//               prepareRow(row);
-//               return (
-//                 <tr key={`row-${rowIndex}`} {...row.getRowProps()}>
-//                   {row.cells.map((cell, cellIndex) => (
-//                     <td key={`cell-${cellIndex}`} {...cell.getCellProps()}>
-//                       {cell.render("Cell")}
-//                     </td>
-//                   ))}
-//                 </tr>
-//               );
-//             })}
-//             {showInput && (
-//               <tr>
-//                 {columns.map((column, columnIndex) => (
-//                   <td key={`input-${columnIndex}`}>
-//                     {column.isEditable ? (
-//                       <input
-//                         type="text"
-//                         name={column.accessor}
-//                         value={formData[column.accessor]}
-//                         onChange={handleInputChange}
-//                       />
-//                     ) : (
-//                       ""
-//                     )}
-//                   </td>
-//                 ))}
-//                 <td>
-//                   <button onClick={addData}>Simpan</button>
-//                 </td>
-//               </tr>
-//             )}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DataKaryawan;
-
-// import React, { useState } from "react";
-// import { useTable, Column } from "react-table";
-// import "./DataKaryawan.css";
-
-// interface FormData {
-//   No: string;
-//   Username: string;
-//   Nip: string;
-//   Name: string;
-//   Role: string;
-// }
-
-// interface EditableColumn extends Column {
-//   isEditable?: boolean;
-// }
-
-// interface DataKaryawanProps {
-//   columns: EditableColumn[];
-// }
-
-// const DataKaryawan: React.FC<DataKaryawanProps> = ({ columns }) => {
-//   const [data, setData] = useState<FormData[]>([]);
-//   const [formData, setFormData] = useState<FormData>({
-//     No: "",
-//     Username: "",
-//     Nip: "",
-//     Name: "",
-//     Role: "",
-//   });
-
-//   const addData = () => {
-//     setData([...data, formData]);
-//     setFormData({
-//       No: "",
-//       Username: "",
-//       Nip: "",
-//       Name: "",
-//       Role: "",
-//     });
-//   };
-
-//   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-//     useTable<FormData>({
-//       columns,
-//       data,
-//     });
-
-//   return (
-//     <div>
-//       <h2>Data Karyawan</h2>
-//       <button onClick={addData}>Tambah Data Karyawan</button>
-//       <div className="table-container">
-//         <table className="table" {...getTableProps()}>
-//           <thead>
-//             {headerGroups.map((headerGroup) => (
-//               <tr {...headerGroup.getHeaderGroupProps()}>
-//                 {headerGroup.headers.map((column) => (
-//                   <th {...column.getHeaderProps()}>
-//                     {column.render("Header")}
-//                   </th>
-//                 ))}
-//               </tr>
-//             ))}
-//           </thead>
-//           <tbody {...getTableBodyProps()}>
-//             {rows.map((row, rowIndex) => {
-//               prepareRow(row);
-//               return (
-//                 <tr key={`row-${rowIndex}`}>
-//                   {row.cells.map((cell, cellIndex) => (
-//                     <td
-//                       key={`cell-${rowIndex}-${cellIndex}`}
-//                       {...cell.getCellProps()}
-//                     >
-//                       {cell.column.isEditable ? (
-//                         <input
-//                           type="text"
-//                           value={cell.value}
-//                           onChange={(
-//                             e: React.ChangeEvent<HTMLInputElement>
-//                           ) => {
-//                             const newValue: string = e.target.value;
-//                             // Update data state with the new value
-//                             setData((oldData) =>
-//                               oldData.map((row, index) =>
-//                                 index === rowIndex
-//                                   ? {
-//                                       ...row,
-//                                       [cell.column.id]: newValue,
-//                                     }
-//                                   : row
-//                               )
-//                             );
-//                           }}
-//                         />
-//                       ) : (
-//                         cell.render("Cell")
-//                       )}
-//                     </td>
-//                   ))}
-//                 </tr>
-//               );
-//             })}
-//           </tbody>
-//         </table>
-//       </div>
+//       {saveSuccess && (
+//         <div className="alert alert-success" role="alert">
+//           Data berhasil disimpan!
+//         </div>
+//       )}
 //     </div>
 //   );
 // };
