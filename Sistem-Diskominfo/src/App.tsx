@@ -5,8 +5,6 @@ import Dashboard from "./Halaman/Dashboard/Dashboard";
 import UploadInfografis from "./Halaman/upload/uploadInfografis";
 import DashboardUser from "./Halaman/User/DashboardUser";
 import FileUpload from "./Halaman/upload/uploadFile";
-// import DataKaryawan from "./Halaman/employee/DataKaryawan";
-// import { columns } from "./Halaman/employee/columns";
 import DataKaryawan from "./Halaman/employee/DataKaryawan";
 
 function App(): JSX.Element {
