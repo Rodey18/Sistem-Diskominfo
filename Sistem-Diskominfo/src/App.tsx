@@ -6,6 +6,7 @@ import UploadInfografis from "./Halaman/upload/uploadInfografis";
 import DashboardUser from "./Halaman/User/DashboardUser";
 import FileUpload from "./Halaman/upload/uploadFile";
 import DataKaryawan from "./Halaman/employee/DataKaryawan";
+import Profile from "./Halaman/Profile/profile";
 
 function App(): JSX.Element {
   return (
@@ -19,10 +20,7 @@ function App(): JSX.Element {
           <Route path="/uploadinfografis" element={<UploadInfografis />} />
           <Route path="/dashboarduser" element={<DashboardUser />} />
           <Route path="/employee" element={<DataKaryawan />} />
-          {/* <Route
-            path="/employee"
-            element={<DataKaryawan columns={columns} />}
-          /> */}
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
