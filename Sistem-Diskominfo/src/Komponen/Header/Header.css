@@ -1,59 +1,43 @@
-/**
- * @Author: Your name
- * @Date:   2024-04-04 09:14:30
- * @Last Modified by:   Your name
- * @Last Modified time: 2024-05-08 14:36:10
- */
-
-
-/* .root {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    /* Menempatkan app bar di atas konten lain */
-
-
-}
-
-/* .app-bar {
-    background-color: grey;
-   
-}  */
 .root {
-    position: relative;
+  position: relative;
 }
+
 .appBar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
+
 .app-bar .toolbar {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
+
 .search {
-    flex-grow: 1;
+  flex-grow: 1;
 }
+
 .search .search-icon-wrapper {
-    padding: 0 12px;
+  padding: 0 12px;
 }
+
 .search .search-input {
-    width: 100%;
+  width: 100%;
 }
+
 .menu-icon {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 /* Atur margin khusus untuk ikon menu di mode mobile */
+
 .mobile-menu-icon {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
 /* Atur margin khusus untuk ikon yang muncul di sebelah kanan */
+
 .end-icon {
-    margin-left: 12px;
+  margin-left: 12px;
 }

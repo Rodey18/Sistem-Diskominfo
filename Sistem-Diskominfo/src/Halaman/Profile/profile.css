@@ -1,0 +1,33 @@
+/**
+ * @Author: Your name
+ * @Date:   2024-05-09 10:01:55
+ * @Last Modified by:   Your name
+ * @Last Modified time: 2024-05-09 16:58:16
+ */
+
+.judul {
+  margin: 20px;
+  padding: 20px;
+  background-color: aqua;
+}
+
+.atas-profile {
+  display: flex;
+}
+
+.identitas {
+  width: 350px;
+  /* Lebar identitas */
+}
+
+.foto {
+  flex: 1;
+  /* Bagian foto akan mengisi sisa ruang yang tersedia */
+  margin-left: 20px;
+  /* Jarak antara identitas dan foto */
+}
+
+.Unggah-foto {
+  color: #264466;
+  background-color: navajowhite;
+}

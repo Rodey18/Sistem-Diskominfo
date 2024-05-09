@@ -8,13 +8,9 @@ const Dashboard: React.FC = () => {
     <div className="dashboard-container">
       {/* <div className="header"> */}
       <PrimarySearchAppBar />
+      {/* Component halaman */}
       <h2>ayam</h2>
-      <h2>ayam</h2>
-      <h2>ayam</h2>
-      <h2>ayam</h2>
-      <h2>ayam</h2>
-      <h2>ayam</h2>
-      <h2>ayam</h2>
+
       {/* </div> */}
       <div className="content">
         <div className="side-menu">
