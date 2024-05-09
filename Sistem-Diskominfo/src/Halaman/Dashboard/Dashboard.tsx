@@ -6,9 +6,16 @@ import "./Dashboard.css";
 const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-container">
-      <div className="header">
-        <PrimarySearchAppBar />
-      </div>
+      {/* <div className="header"> */}
+      <PrimarySearchAppBar />
+      <h2>ayam</h2>
+      <h2>ayam</h2>
+      <h2>ayam</h2>
+      <h2>ayam</h2>
+      <h2>ayam</h2>
+      <h2>ayam</h2>
+      <h2>ayam</h2>
+      {/* </div> */}
       <div className="content">
         <div className="side-menu">
           <SideMenuPage />

@@ -4,3 +4,20 @@
  * @Last Modified by:   Your name
  * @Last Modified time: 2024-05-08 09:57:46
  */
+
+
+/* icon */
+
+.MuiToolbar-root {
+    padding: 0px;
+    color: white;
+}
+
+.MuiTypography-root {
+    margin: 0px;
+}
+
+.case {
+    padding: 0px;
+    margin: 0px;
+}

@@ -19,6 +19,17 @@ import HomeIcon from "@mui/icons-material/Home";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import PeopleIcon from "@mui/icons-material/People";
 import LogoutIcon from "@mui/icons-material/Logout";
+import "./menu.css";
+// import { Padding } from "@mui/icons-material";
+import { styled } from "@mui/material/styles";
+
+const CustomizedToolbar = styled(Toolbar)`
+  padding: 0px;
+  @media (min-width: 600px) {
+    /* Tambahkan gaya khusus untuk lebar layar maksimum 600px */
+    padding: 0px; /* Misalnya, mengubah warna slider pada layar kecil */
+  }
+`;
 
 const drawerWidth = 240;
 
@@ -56,25 +67,26 @@ const SideMenuPage: React.FC<Props> = ({ window }: Props) => {
       }}
     >
       <div>
-        <Toolbar>
+        <CustomizedToolbar>
           <Typography
+            className="case"
             variant="h6"
             sx={{
               color: "white",
               backgroundColor: "#000",
-              padding: "10px",
-              margin: "20px",
+              padding: "13px",
+              // margin: "20px",
               width: "100%",
               textAlign: "center",
               minWidth: "240px",
               m: 0,
-              ml: 1,
+              ml: 0,
               fontSize: "24px",
             }}
           >
             DataStat
           </Typography>
-        </Toolbar>
+        </CustomizedToolbar>
         <List>
           <ListItem disablePadding>
             <ListItemButton component={Link} to="/dashboard">
